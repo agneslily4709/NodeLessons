@@ -6,9 +6,21 @@ export const getAllUsers = (req,res) => {
 export const getUsersByPageLimit = (req,res) => {
         const page = req.query.page
         const limit = req.query.limit
-        console.log(page,limit)
         const start  = (page-1)*limit
         const end= page * limit
-        const result = users.slice(start,end)
+        let result = {}
+        if(end<users.length){
+                result.next = {
+                        page:page+1,
+                        limit:limit
+                }
+        }
+        if(start>0){
+                result.prev = {
+                        page:page-1,
+                        limit:limit
+                }
+        }
+        result.result = users.slice(start,end)
         res.json(result)
 }
