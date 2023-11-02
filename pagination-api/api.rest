@@ -2,3 +2,8 @@ GET http://localhost:5000/api/getAllUsers
 
 ###
 GET http://localhost:5000/api/getUsers?page=2&limit=2
+
+###
+GET http://localhost:5000/api/getPosts?page=2&limit=2
+
+
